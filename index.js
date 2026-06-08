@@ -1,22 +1,24 @@
 const express = require("express");
 const app = express();
 
-app.use(express.json());
-
-let count = 0;
+let totalExecut = 0;
 
 app.post("/run", (req, res) => {
-    count++;
-    console.log("Executor:", count);
-    res.json({ count });
+    totalExecut++;
+
+    res.json({
+        "Total Execut": totalExecut,
+        "by": "Hiro Kai",
+        "status": "success"
+    });
 });
 
 app.get("/", (req, res) => {
-    res.send(`
-    <h1>Owner: Nova X Hub</h1>
-    <h2>Executor: ${count}</h2>
-    <h2>Status: Work</h2>
-    `);
+    res.json({
+        "Total Execut": totalExecut,
+        "by": "Nova X Hub",
+        "status": "success"
+    });
 });
 
 const PORT = process.env.PORT || 3000;
